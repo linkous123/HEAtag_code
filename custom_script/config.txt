@@ -1,0 +1,17 @@
+## config file 
+## don't change the order of configuration
+
+# cell barcoe
+-cb_location 0:17
+
+-cb_mismatch 0
+
+# sampletag barcode
+-sb_location 25:41
+
+-sb_seq TCAGATGCCTGGATCC,AGCTGCTAACTGCAGC,ATTCAAGGGCAGCCGC,CACTAGGATCCGATGC
+
+-sb_mismatch 1
+
+# umi
+-umi_location 17:29
