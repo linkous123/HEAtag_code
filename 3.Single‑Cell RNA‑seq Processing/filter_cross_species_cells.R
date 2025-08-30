@@ -20,7 +20,7 @@ obj = subset(obj, species percent.mm_genes > 80 & percent.rat_genes > 80)
 ## Optionally
 obj$mm.umi = obj$nCount_RNA * obj$percent.mm_genes / 100
 obj$rat.umi = obj$nCount_RNA * obj$percent.rat_genes / 100
-st_mat = obj@meta.data[, c("percent.mm_genes", "percent.rat_genes")] |> as.matrix() |> t()
+st_mat = obj@meta.data[, c("mm.umi", "rat.umi")] |> as.matrix() |> t()
 HTODemux <- CreateSeuratObject(counts = st_mat,project = "agglutinin", assay = "ST")
 HTODemux <- NormalizeData(HTODemux, assay = "ST", normalization.method = "CLR")
 HTODemux <- HTODemux(HTODemux, assay = "ST", positive.quantile = 0.99)
@@ -67,3 +67,4 @@ FeaturePlot(obj,
 
 
 qsave(obj, "obj_1.qs")
+
