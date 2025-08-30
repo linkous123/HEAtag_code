@@ -18,6 +18,8 @@ plot_spe_density(obj, c("percent.mm_genes", "percent.rat_genes"))
 obj = subset(obj, species percent.mm_genes > 80 & percent.rat_genes > 80)
 
 ## Optionally
+obj$mm.umi = obj$nCount_RNA * obj$percent.mm_genes / 100
+obj$rat.umi = obj$nCount_RNA * obj$percent.rat_genes / 100
 st_mat = obj@meta.data[, c("percent.mm_genes", "percent.rat_genes")] |> as.matrix() |> t()
 HTODemux <- CreateSeuratObject(counts = st_mat,project = "agglutinin", assay = "ST")
 HTODemux <- NormalizeData(HTODemux, assay = "ST", normalization.method = "CLR")
@@ -61,6 +63,7 @@ FeaturePlot(obj,
               axis.ticks = element_blank())+
         xlab('UMAP_1')+
         ylab('UMAP_2')
+
 
 
 qsave(obj, "obj_1.qs")
