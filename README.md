@@ -12,6 +12,7 @@ This repository hosts code used in the study
 - [2) Genome Functional Annotation](#2-genome-functional-annotation)
 - [3) Single‑Cell RNA‑seq Processing](#3-single-cell-rna-seq-processing)
 - [4) SNP‑based Demultiplexing](#4-snp-based-demultiplexing)
+- [5) Visualization](#Visualization)
 - [Cite](#cite)
 - [License](#license)
 - [Contact](#contact)
@@ -24,6 +25,7 @@ This repo provides:
 - **Functional annotation** via local UniProt/NR BLAST and reciprocal best hits (RBH).
 - **Downstream scRNA‑seq analysis** (QC, filtering, demultiplexing, DE & enrichment).
 - **SNP‑based demultiplexing** using scSplit/Freemuxlet.
+- - **Visualization** visualization code
 
 ---
 
