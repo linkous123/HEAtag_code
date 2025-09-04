@@ -110,6 +110,11 @@ Tips:
 
 ---
 
+## 5) Visualization
+
+- `Visualization_funtion.R` — custom functions for drawing graphics  
+- `Visualization.R` — visualization code  
+
 ## Cite
 
 If you use this code, please cite the HEATag paper:
