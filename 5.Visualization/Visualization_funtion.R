@@ -126,17 +126,14 @@ plot_htodemux <- function(obj){
     hto_plot <- HTOHeatmap(obj, assay = "ST") +
             scale_fill_gradient(low = "#950095", high = "#FFFF00") +
             theme(
-                text = element_text(family = "FS Me Regular", size = 12),  # 设置全局字体和大小
-                axis.title = element_text(size = 14),  # 轴标题字体大小
-                axis.text = element_text(size = 14)  # 轴刻度字体大小
+                text = element_text(family = "FS Me Regular", size = 12), 
+                axis.title = element_text(size = 14), 
+                axis.text = element_text(size = 14) 
             )
     return(hto_plot)
 }
 
 plot_cell_number_scale <- function(obj, cluster_col, sample_col, color) {
-
-    # p_list = plot_cell_number_scale(merge_obj, cluster_col = "seurat_clusters", sample_col = "sample",
-    #                 color = custom_colors$dutch)
     
   table_clusters_by_samples <- obj@meta.data %>%
     dplyr::rename(cluster = !!sym(cluster_col), 
@@ -209,4 +206,5 @@ plot_cell_number_scale <- function(obj, cluster_col, sample_col, color) {
 
     plot_list = list(p1, p2)
     return(plot_list)
+
 }
