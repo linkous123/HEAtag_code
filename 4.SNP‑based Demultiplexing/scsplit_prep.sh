@@ -1,7 +1,7 @@
 #!/bin/bash
 
 BAM="./bam/merged.bam"
-SCSPLIT_OUTDIR="./t34"
+SCSPLIT_OUTDIR="./outs"
 
 singularity exec Demuxafy.sif samtools view -@ 32 -b -S -q 10 -F 3844 $BAM > $SCSPLIT_OUTDIR/filtered_bam.bam
 
