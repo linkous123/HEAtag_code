@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FASTA="/Share/user/limaor/ref/GRCm39/GRCm39.genome.fa"
+FASTA="/path/GRCm39.genome.fa"
 SCSPLIT_OUTDIR="t34"
 
 
