@@ -25,7 +25,6 @@ barcode=args.b
 threads_used= args.t
 
 def hamming_distance(str1, str2, threshold=1):
-    """计算两个字符串的汉明距离"""
     return sum(c1 != c2 for c1, c2 in zip(str1, str2))
  
 def char_to_hamming_binary_char(char):
@@ -100,7 +99,7 @@ def parse_config_file(cfig):
         for line in file:
             line = line.strip()
             if not line or line.startswith('#'):
-                continue  # 跳过空行和注释
+                continue
             key, value = map(str.strip, line.split(None, 1))
             config_values[key] = value
     cbl = config_values['-cb_location'].split(':')
@@ -196,4 +195,5 @@ if __name__=="__main__":
     start_time_2 = time.time()
     modify(mat, sbs, barcodes, outf, sbm, cbm, threads_used)
     end_time_2 = time.time()
+
     print(f"Execution time for modify df processing: {end_time_2 - start_time_2} seconds")
