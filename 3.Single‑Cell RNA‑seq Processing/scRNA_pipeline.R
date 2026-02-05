@@ -20,7 +20,7 @@ library(qs)
 
 source("./functions.R")
 
-obj_dir = "/Share/user/limaor/project/1sampeltag/20250721/mice_lable_unlable/lable_unlable/step3/filtered_feature_bc_matrix"
+obj_dir = "/path/filtered_feature_bc_matrix"
 
 obj_matrix <- Read10X(obj_dir)
 dim(obj_matrix)
@@ -52,11 +52,8 @@ obj = down_stream(obj)
 DimPlot(obj, reduction = "umap.unintegrated", label = T)
 
 ## Select parameters
-
 ElbowPlot(obj, ndims = 50)
-
 obj <- FindNeighbors(obj, dims = 1:24, reduction = "pca")
-
 res <- auto_cluster_resolution(
   obj,
   reduction = "pca",
@@ -67,7 +64,6 @@ res <- auto_cluster_resolution(
 )
 
 obj <- FindClusters(obj, resolution =0.4, cluster.name = "unintegrated_clusters")
-
 obj <- RunUMAP(obj, dims = 1:pcs, reduction = "pca", reduction.name = "umap.unintegrated")
 
 ## Select markers
@@ -87,4 +83,5 @@ p1 = DoHeatmap(seu, features = top20$gene, group.by = "umap.unintegrated") + ggt
 options(repr.plot.width=5, repr.plot.height=5)
 Nebulosa::plot_density(obj, features = c('Nr5a1'), joint =TRUE, reduction = "umap.unintegrated")
 
-qsave(obj, "obj_1.qs")
+
+qsave(obj, "obj.qs")
