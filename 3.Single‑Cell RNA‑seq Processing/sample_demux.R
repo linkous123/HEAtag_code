@@ -8,7 +8,7 @@ library(qs)
 
 source("./functions.R")
 
-obj = qread("obj_1.qs")
+obj = qread("obj.qs")
 
 data_df <- read.csv("your_heattg.csv")
 rownames(data_df) <- data_df$cellbarcode
@@ -42,5 +42,6 @@ library(hashDemux)
 hashDemux <- CreateSeuratObject(counts = st_mat, assay="HTO")
 hashDemux <- NormalizeData(hashDemux, assay = "HTO", normalization.method = "CLR",margin = 2)
 hashDemux = clustering_based_demux(obj, assay = "HTO", nCores = 1)
+
 
 
