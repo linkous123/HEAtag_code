@@ -41,12 +41,12 @@ p <- ggplot(data = obj_clean_long, aes(x = Celltype, y = log10(Expression), fill
   scale_color_manual(values = celltype_fresh_colors) +
   scale_fill_manual(values = celltype_fresh_colors) +
   # theme_bw() +
-  labs(x = '', y = 'log10(Sampletag Count)') +  # 更新 y 轴标签
+  labs(x = '', y = 'log10(Sampletag Count)') + 
   theme(
       panel.background = element_blank(),
     panel.grid.major.x = element_blank(),
     axis.title.x = element_blank(),
-      strip.background = element_blank(),  # 去除分组标题的背景
+      strip.background = element_blank(), 
     strip.text = element_text(face = "bold", size = 17),
   panel.border = element_rect(color = "black", linewidth  = 0.2, fill = NA),
   plot.margin = margin(t = 0, r = 0, b = 0, l = 30, unit = 'pt')
@@ -54,9 +54,9 @@ p <- ggplot(data = obj_clean_long, aes(x = Celltype, y = log10(Expression), fill
   facet_wrap(~ Feature, ncol = 4) +
   theme(aspect.ratio = 0.2/0.5) +
   theme(
-    axis.text.x = element_text(angle = 45, hjust = 1, size = 13)  # 设置 y 轴标签的角度为 90 度
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 13) 
   ) +
-  coord_cartesian(ylim = c(0, 5))  # 调整 y 轴范围，设定 max_limit
+  coord_cartesian(ylim = c(0, 5)) 
 
 ## fig2 f
 plot_umap(obj)
@@ -165,13 +165,13 @@ ggplot() +
     data = df %>% filter(group == "label"),
     aes(x = celltype, y = n_genes),
     side = "l", trim = FALSE, color = "black", fill = "#C6307C",
-      width = 0.95 # 小提琴宽度
+      width = 0.95 
   ) +
   geom_half_violin(
     data = df %>% filter(group == "unlabel"),
     aes(x = celltype, y = n_genes),
     side = "r", trim = FALSE, color = "black", fill = "#D9D9D9",
-      width = 0.95 # 小提琴宽度
+      width = 0.95
   ) +
   labs(y = "No. of expressed genes", x = NULL, fill = NULL) +
   theme_classic() +
@@ -211,4 +211,5 @@ ggplot(df, aes(x = log1p(label), y = log1p(unlabel))) +
     title = "",
     x     = "label",
     y     = "unlabel"
+
   )
