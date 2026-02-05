@@ -8,7 +8,7 @@ library(qs)
 
 source("./functions.R")
 
-obj = qread("obj_1.qs")
+obj = qread("obj.qs")
 
 obj = add_percent_spe(obj, c("mm", "rat"))
 
@@ -27,15 +27,11 @@ HTODemux <- HTODemux(HTODemux, assay = "ST", positive.quantile = 0.99)
 
 # Re-analysis
 obj = down_stream(obj)
-
 DimPlot(obj, reduction = "umap.unintegrated", label = T)
 
 ## Select parameters
-
 ElbowPlot(obj, ndims = 50)
-
 obj <- FindNeighbors(obj, dims = 1:24, reduction = "pca")
-
 res <- auto_cluster_resolution(
   obj,
   reduction = "pca",
@@ -46,7 +42,6 @@ res <- auto_cluster_resolution(
 )
 
 obj <- FindClusters(obj, resolution =0.4, cluster.name = "unintegrated_clusters")
-
 obj <- RunUMAP(obj, dims = 1:pcs, reduction = "pca", reduction.name = "umap.unintegrated")
 
 options(repr.plot.width=10, repr.plot.height=10)
@@ -66,5 +61,6 @@ FeaturePlot(obj,
 
 
 
-qsave(obj, "obj_1.qs")
+qsave(obj, "obj.qs")
+
 
