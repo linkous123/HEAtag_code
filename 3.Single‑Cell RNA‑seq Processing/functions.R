@@ -77,7 +77,7 @@ auto_cluster_resolution <- function(
 
   meta <- obj@meta.data
   cluster_cols <- grep(paste0("^", prefix), colnames(meta), value = TRUE)
-  if (length(cluster_cols) == 0) stop("找不到聚类列（前缀：", prefix, "）。")
+  if (length(cluster_cols) == 0) stop("Cannot find the clustering column（prefix：", prefix, "）。")
 
   res_vals <- suppressWarnings(as.numeric(sub(paste0("^", prefix), "", cluster_cols)))
   ord <- order(res_vals)
@@ -229,7 +229,6 @@ plot_spe_density <- function(obj, spe_percent_vector){
     for (i in 1:length(spe_percent_vector)){
 
         select = spe_percent_vector[[i]]
-        # print(select)
         
         spe_data = obj@meta.data[ , select]
 
@@ -347,4 +346,5 @@ plot_go_lollipop_divergent <- function(
       axis.line.y  = element_line(linewidth = 0.8, colour = "black"),
       plot.margin  = margin(10, 12, 10, 12)  
     )
+
 }
