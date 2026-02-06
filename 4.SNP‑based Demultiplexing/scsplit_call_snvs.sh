@@ -1,7 +1,7 @@
 #!/bin/bash
 
 FASTA="/path/GRCm39.genome.fa"
-SCSPLIT_OUTDIR="t34"
+SCSPLIT_OUTDIR="outs"
 
 
 singularity exec Demuxafy.sif freebayes -f $FASTA -iXu -C 2 -q 1 $SCSPLIT_OUTDIR/filtered_bam_dedup_sorted.bam > $SCSPLIT_OUTDIR/freebayes_var.vcf
