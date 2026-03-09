@@ -15,11 +15,11 @@ obj_leydig = subset(obj_369, RNA_snn_res.0.4 %in% c("6", "8", "20"))
 obj_leydig$stage = obj_leydig$freemuxlet
 
 obj_leydig$stage = gsub("SNP-3W", "early", obj_leydig$stage)
-obj_leydig$stage = gsub("SNP-6W", "early", obj_leydig$stage)
+obj_leydig$stage = gsub("SNP-6W", "late", obj_leydig$stage)
 obj_leydig$stage = gsub("SNP-9W", "lata", obj_leydig$stage)
 
 dge_vsm = FindMarkers(obj_leydig, group.by = "stage",
-                        ident.1 = 'early', ident.2 = "lata")
+                        ident.1 = 'late', ident.2 = "early")
 
 
 dge_vsm_sig <- dge_vsm %>% subset(p_val_adj < 0.05)
@@ -97,4 +97,5 @@ ego_down <- enrichGO(
   gene = genes_down, universe = universe, OrgDb = org.Mm.eg.db,
   keyType = "SYMBOL", ont = "MF", pAdjustMethod = "BH",
   qvalueCutoff = 0.05, readable = TRUE
+
 ) %>% simplify(cutoff = 0.5, by = "p.adjust", select_fun = min)
